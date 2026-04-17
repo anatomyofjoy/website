@@ -29,46 +29,23 @@ Story, emotion, personal, joy, human, keepsake, art, moments, warm, handmade, th
 
 ## Products
 
-**Etsy Star Seller** | 19 active listings | 76+ reviews
+**Note:** The Etsy shop (AnatomyOfJoy / StoryLinesDesign) sells multiple product types, but the **Anatomy of Joy brand/website** is specifically for **story scarves** only. Other Etsy products (portraits, puzzles, notecards, etc.) are separate.
 
-**Etsy shop URL:** etsy.com/shop/AnatomyOfJoy (alias: StoryLinesDesign)
-
-**Etsy tagline:** "Custom portrait illustrations, featured on fun products"
-
-### Product Categories (from Etsy)
-
-1. **Story Scarves (3 listings)** — Hero product category
-   - Custom Illustrated Map Scarf ($195, free shipping) — **Featured in Etsy's Top 100 Gifts 2025**
-   - Custom Map Silk Scarf (variant/additional listing)
-   - Hand-illustrated, artistic interpretation of a meaningful location
-   - Customer provides screenshot of location + special spots to include
-   - Contact: shivantika@anatomyofjoy.co for custom requests
-
-2. **Framed Portraits (4 listings)**
-   - Custom illustrated portrait art, framed
-
-3. **Portrait Notecards (2 listings)**
-   - Custom illustrated notecards
-
-4. **Portrait Puzzles (1 listing)**
-   - Custom illustrated jigsaw puzzle
-
-5. **Alphabet Products (3 listings)**
-   - Custom alphabet/letter-based products
-
-6. **Gift Sets (3 listings)**
-   - Curated bundles
-
-7. **Holidays (3 listings)**
-   - Seasonal/holiday-themed products
+### Story Scarves
+- Custom Illustrated Map Scarf ($195, free shipping) — **Featured in Etsy's Top 100 Gifts 2025**
+- Framed Story Scarves (framed versions of the silk scarves)
+- Hand-illustrated, artistic interpretation of a meaningful location
+- Silk material, premium quality
+- Customer provides screenshot of location + special spots to include
+- Contact: shivantika@anatomyofjoy.co for custom requests
+- 76+ reviews on Etsy, Star Seller
 
 ### Product Nature
-- All products are **custom/personalized** (not mass-produced inventory)
-- Core medium: hand illustration
-- Illustrations are applied to multiple product types (silk scarves, framed prints, puzzles, notecards)
-- Premium price point (scarves at $195)
+- Custom/personalized (not mass-produced inventory)
+- Each scarf is a one-of-a-kind illustrated story
+- Premium price point ($195)
 - Made to order
-- The illustration is the product — the physical medium (scarf, frame, puzzle) is the format
+- The illustration is the product — the silk scarf is the canvas
 
 ---
 
@@ -239,10 +216,10 @@ This is a critical UX consideration — the "buy" button starts a creative colla
 - Post-purchase communication flow
 
 ### Site Structure Implications
-With 7 product categories (not just scarves), the site needs:
-- A proper collections/shop page with category filtering
-- Individual product pages per category type
-- The story/brand narrative should bridge across all product types (the common thread is the custom illustration, not the physical format)
+Focused product line (story scarves + framed scarves) means:
+- Simpler shop structure (no complex category filtering needed)
+- Product pages can go deep on the scarf story and customization process
+- The brand narrative is tightly focused: your story, illustrated on silk
 
 ### Inspiration Site
 Whiled.co confirmed as base inspiration (Shivantika included it in her email).
