@@ -424,8 +424,38 @@
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-6px) rotate(1.5deg); }
     }
+    @keyframes smiley-roll {
+      0% { transform: translateX(-80px) rotate(0deg); }
+      100% { transform: translateX(calc(100vw + 80px)) rotate(1080deg); }
+    }
+    @keyframes smiley-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* === ROLLING SMILEY === */
+    .smiley-strip {
+      overflow: hidden;
+      padding: 20px 0;
+      background: var(--yellow);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      position: relative;
+    }
+    .smiley-track {
+      width: 100%;
+      height: 60px;
+      position: relative;
+    }
+    .rolling-smiley {
+      width: 60px; height: 60px;
+      position: absolute; top: 0; left: 0;
+      animation: smiley-roll 12s linear infinite, smiley-bounce .6s ease-in-out infinite;
+      filter: drop-shadow(2px 2px 0 rgba(22,22,22,.1));
+    }
 
     @media (prefers-reduced-motion: reduce) {
+      .rolling-smiley { animation: none; transform: translateX(50vw); }
       .marquee-track, .footer-marquee .marquee-track { animation: none; }
       .hero-left .arrow-float { animation: none; }
       .hero-right .badge-float { animation: none; }
@@ -659,13 +689,10 @@
     </div>
   </section>
 
-  <!-- FOOTER MARQUEE -->
-  <div class="footer-marquee">
-    <div class="marquee-track">
-      <span class="marquee-item">anatomy of joy · hand-drawn keepsakes · new york city · your story, illustrated · </span>
-      <span class="marquee-item">anatomy of joy · hand-drawn keepsakes · new york city · your story, illustrated · </span>
-      <span class="marquee-item">anatomy of joy · hand-drawn keepsakes · new york city · your story, illustrated · </span>
-      <span class="marquee-item">anatomy of joy · hand-drawn keepsakes · new york city · your story, illustrated · </span>
+  <!-- ROLLING SMILEY STRIP -->
+  <div class="smiley-strip">
+    <div class="smiley-track">
+      <img class="rolling-smiley" src="../../assets/logo/AOJ Logo_Cropped.png" alt="" />
     </div>
   </div>
 
