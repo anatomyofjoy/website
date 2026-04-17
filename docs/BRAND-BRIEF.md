@@ -29,20 +29,46 @@ Story, emotion, personal, joy, human, keepsake, art, moments, warm, handmade, th
 
 ## Products
 
-### Places Scarf (Hero Product)
-- Custom illustrated silk scarf featuring a hand-illustrated map of a meaningful location
-- Price: $195 (free shipping)
-- Featured in **Etsy's Top 100 Gifts 2025**
-- 55-76+ reviews on Etsy
-- Use cases: hometown, first date spot, neighborhood, travel destination, housewarming, wedding, holidays
-- Each scarf is a one-of-a-kind illustrated story
+**Etsy Star Seller** | 19 active listings | 76+ reviews
+
+**Etsy shop URL:** etsy.com/shop/AnatomyOfJoy (alias: StoryLinesDesign)
+
+**Etsy tagline:** "Custom portrait illustrations, featured on fun products"
+
+### Product Categories (from Etsy)
+
+1. **Story Scarves (3 listings)** — Hero product category
+   - Custom Illustrated Map Scarf ($195, free shipping) — **Featured in Etsy's Top 100 Gifts 2025**
+   - Custom Map Silk Scarf (variant/additional listing)
+   - Hand-illustrated, artistic interpretation of a meaningful location
+   - Customer provides screenshot of location + special spots to include
+   - Contact: shivantika@anatomyofjoy.co for custom requests
+
+2. **Framed Portraits (4 listings)**
+   - Custom illustrated portrait art, framed
+
+3. **Portrait Notecards (2 listings)**
+   - Custom illustrated notecards
+
+4. **Portrait Puzzles (1 listing)**
+   - Custom illustrated jigsaw puzzle
+
+5. **Alphabet Products (3 listings)**
+   - Custom alphabet/letter-based products
+
+6. **Gift Sets (3 listings)**
+   - Curated bundles
+
+7. **Holidays (3 listings)**
+   - Seasonal/holiday-themed products
 
 ### Product Nature
-- Custom/personalized (not mass-produced inventory)
-- Silk material
-- Hand-illustrated designs
+- All products are **custom/personalized** (not mass-produced inventory)
+- Core medium: hand illustration
+- Illustrations are applied to multiple product types (silk scarves, framed prints, puzzles, notecards)
+- Premium price point (scarves at $195)
 - Made to order
-- Premium price point ($195)
+- The illustration is the product — the physical medium (scarf, frame, puzzle) is the format
 
 ---
 
@@ -201,13 +227,22 @@ These hand-drawn elements are a key differentiator from Whiled's colored-border 
 ## Build Notes
 
 ### Custom Order Flow
-Unlike Whiled's standard e-commerce (add to cart → checkout), AOJ needs a **custom order flow** since each scarf is personalized. This likely means:
-- Product page explains the process
-- Customer provides their story/location details
+Unlike Whiled's standard e-commerce (add to cart → checkout), AOJ needs a **custom order flow** since every product is personalized. The flow:
+- Product page explains the process + shows examples
+- Customer places order and provides their details (location screenshot, portrait photos, etc.)
 - Shivantika creates the custom illustration
 - Customer approves → production → shipping
 
-This is a critical UX consideration — the "buy" button isn't just "add to cart." It's the start of a creative collaboration.
+This is a critical UX consideration — the "buy" button starts a creative collaboration. Etsy currently handles this well (order notes + email follow-up). Shopify needs to replicate this with:
+- Clear "How It Works" section on product pages
+- Order notes / customization fields at checkout
+- Post-purchase communication flow
+
+### Site Structure Implications
+With 7 product categories (not just scarves), the site needs:
+- A proper collections/shop page with category filtering
+- Individual product pages per category type
+- The story/brand narrative should bridge across all product types (the common thread is the custom illustration, not the physical format)
 
 ### Inspiration Site
 Whiled.co confirmed as base inspiration (Shivantika included it in her email).
