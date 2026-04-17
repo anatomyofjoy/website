@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOJ Homepage — Variant 2: Image-Forward</title>
+  <style>
+    @font-face { font-family: "PastaWineBig"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Big.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "PastaWineLittle"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Little.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "DMSans"; src: url("../../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype"); font-display: swap; }
+    :root { --ink:#161616; --canvas:#f6f3ee; --yellow:#f4ba16; --ink20:rgba(22,22,22,.2); --canvas-strong:#ede9e1; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--canvas); color: var(--ink); font: 400 16px/1.55 "DMSans", system-ui, sans-serif; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+    .ui { text-transform: uppercase; letter-spacing: .09em; font-size: .78rem; font-weight: 500; }
+    .btn { display: inline-block; padding: 16px 28px; text-decoration: none; border: 2px solid var(--ink); background: var(--yellow); color: var(--ink); font: 600 .8rem/1 "DMSans", sans-serif; letter-spacing: .08em; text-transform: uppercase; transition: background .28s ease, color .28s ease; }
+    .btn:hover { background: var(--ink); color: var(--canvas); }
+    .btn-white { background: var(--canvas); border-color: var(--canvas); color: var(--ink); }
+    .btn-white:hover { background: var(--yellow); border-color: var(--yellow); }
+    img { max-width: 100%; }
+
+    /* === HEADER: Minimal overlay on hero === */
+    .header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; padding: 24px clamp(20px, 5vw, 48px); display: flex; justify-content: space-between; align-items: center; }
+    .header .wordmark { height: 26px; filter: brightness(0) invert(1); }
+    .header nav a { text-decoration: none; color: white; margin-left: 28px; }
+
+    /* === HERO: Full-bleed image with centered text overlay === */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,22,22,.45) 0%, rgba(22,22,22,.2) 50%, rgba(22,22,22,.55) 100%); }
+    .hero-content { position: relative; z-index: 1; color: var(--canvas); max-width: 680px; padding: 40px 20px; }
+    .hero-content .wordmark-hero { width: min(320px, 60vw); margin-bottom: 24px; filter: brightness(0) invert(1); }
+    .hero-content h1 { font: 400 clamp(2.6rem, 7vw, 5.5rem)/0.9 "PastaWineBig", serif; margin-bottom: 16px; }
+    .hero-content p { font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.5; margin-bottom: 28px; opacity: .85; }
+
+    /* === HOW IT WORKS: Horizontal ticker style === */
+    .how-it-works { padding: clamp(48px, 8vw, 96px) 0; border-bottom: 1px solid var(--ink20); }
+    .how-header { text-align: center; margin-bottom: 48px; }
+    .how-header h2 { font: 400 clamp(1.8rem, 4vw, 3rem)/1.05 "PastaWineBig", serif; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .step { text-align: center; padding: clamp(24px, 3vw, 48px); position: relative; }
+    .step::after { content: '→'; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 1.6rem; opacity: .25; }
+    .step:last-child::after { display: none; }
+    .step-icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .step h3 { font: 400 clamp(1.1rem, 2vw, 1.5rem)/1.15 "PastaWineLittle", serif; margin-bottom: 8px; }
+    .step p { font-size: .9rem; opacity: .7; max-width: 28ch; margin: 0 auto; }
+
+    /* === FEATURED: Large staggered gallery === */
+    .featured { padding: clamp(48px, 8vw, 96px) 0; }
+    .featured-header { text-align: center; margin-bottom: 48px; }
+    .featured-header h2 { font: 400 clamp(1.8rem, 4vw, 3rem)/1.05 "PastaWineBig", serif; }
+    .gallery { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+    .gallery-item { position: relative; overflow: hidden; }
+    .gallery-item img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: opacity .28s ease; }
+    .gallery-item:hover img { opacity: .88; }
+    .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(22,22,22,.7)); color: var(--canvas); }
+    .gallery-caption h3 { font: 400 1.3rem/1.15 "PastaWineLittle", serif; margin-bottom: 4px; }
+    .gallery-caption span { font-size: .8rem; opacity: .7; }
+    .gallery-row2 { display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin-top: 20px; }
+
+    /* === SOCIAL PROOF: Minimal banner === */
+    .social-proof { padding: clamp(40px, 6vw, 72px) 0; background: var(--ink); color: var(--canvas); text-align: center; }
+    .social-proof .stars { font-size: 1.6rem; margin-bottom: 12px; color: var(--yellow); }
+    .social-proof blockquote { font: 400 clamp(1.2rem, 2.5vw, 1.6rem)/1.4 "PastaWineLittle", serif; font-style: italic; max-width: 560px; margin: 0 auto 12px; }
+    .social-proof cite { font-style: normal; font-size: .85rem; opacity: .5; }
+    .social-proof .badge { margin-top: 16px; display: inline-block; padding: 8px 16px; border: 1px solid rgba(246,243,238,.25); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+
+    /* === FOUNDER: Image-dominant === */
+    .founder { padding: 0; display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+    .founder-img { background: var(--canvas-strong); display: grid; place-items: center; font-size: .9rem; opacity: .4; }
+    .founder-text { padding: clamp(40px, 6vw, 80px); display: flex; flex-direction: column; justify-content: center; }
+    .founder-text h2 { font: 400 clamp(1.6rem, 3vw, 2.6rem)/1.05 "PastaWineBig", serif; margin-bottom: 16px; }
+    .founder-text p { max-width: 44ch; line-height: 1.6; margin-bottom: 20px; }
+    .founder-text .signature { font: 400 1.4rem/1 "PastaWineLittle", serif; opacity: .5; margin-top: 8px; }
+
+    /* === NEWSLETTER: Yellow band === */
+    .newsletter { padding: clamp(48px, 6vw, 72px) 0; background: var(--yellow); text-align: center; }
+    .newsletter h2 { font: 400 clamp(1.6rem, 3vw, 2.4rem)/1.05 "PastaWineBig", serif; margin-bottom: 8px; }
+    .newsletter p { margin-bottom: 20px; opacity: .7; }
+    .newsletter form { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+    .newsletter input { flex: 1; padding: 14px 18px; border: 2px solid var(--ink); background: var(--canvas); font: 400 .9rem/1 "DMSans", sans-serif; }
+    .newsletter button { padding: 14px 24px; border: 2px solid var(--ink); border-left: 0; background: var(--ink); color: var(--canvas); font: 600 .78rem/1 "DMSans", sans-serif; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+
+    /* === FOOTER === */
+    .footer { padding: 32px 0; border-top: 1px solid var(--ink20); }
+    .footer .container { display: flex; justify-content: space-between; align-items: center; }
+    .footer .logo { height: 36px; }
+    .footer nav a { text-decoration: none; color: var(--ink); margin-left: 20px; font-size: .82rem; }
+    .footer .copy { font-size: .72rem; opacity: .45; }
+
+    @media (max-width: 900px) {
+      .header .wordmark { filter: none; }
+      .header nav a { color: var(--ink); }
+      .hero { min-height: 80vh; }
+      .steps { grid-template-columns: 1fr; }
+      .step::after { display: none; }
+      .gallery, .gallery-row2 { grid-template-columns: 1fr; }
+      .founder { grid-template-columns: 1fr; }
+      .founder-img { min-height: 50vh; }
+      .footer .container { flex-direction: column; gap: 14px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img class="wordmark" src="../../assets/logo/AOJ Wordmark.png" alt="Anatomy of Joy" />
+    <nav class="ui">
+      <a href="#">Shop</a>
+      <a href="#">Our Story</a>
+      <a href="#">How It Works</a>
+    </nav>
+  </header>
+
+  <!-- HERO: Full-bleed image -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="../../assets/images/Artboard 1.jpg" alt="AOJ scarf lifestyle" />
+    </div>
+    <div class="hero-content">
+      <img class="wordmark-hero" src="../../assets/logo/AOJ Wordmark.png" alt="Anatomy of Joy" />
+      <h1>where your stories find a forever.</h1>
+      <p>Custom illustrated silk scarves that capture the places and memories you hold closest.</p>
+      <a href="#" class="btn-white btn">Start Your Story</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="how-header">
+        <p class="ui" style="margin-bottom:12px; opacity:.5;">How It Works</p>
+        <h2>Memory to masterpiece in three steps.</h2>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-icon">📍</div>
+          <h3>Share a Place</h3>
+          <p>Tell us about a location, moment, or memory that matters to you.</p>
+        </article>
+        <article class="step">
+          <div class="step-icon">✏️</div>
+          <h3>We Draw Your Story</h3>
+          <p>Our artist creates a custom illustration and sends a preview for your approval.</p>
+        </article>
+        <article class="step">
+          <div class="step-icon">🎁</div>
+          <h3>Unwrap Joy</h3>
+          <p>Your one-of-a-kind silk scarf arrives, ready to wear or gift.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED GALLERY -->
+  <section class="featured">
+    <div class="container">
+      <div class="featured-header">
+        <p class="ui" style="margin-bottom:12px; opacity:.5;">Gallery</p>
+        <h2>Stories we've brought to life.</h2>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="../../assets/product-flat/04_Photorealistic-Silk-Scarf-Mockup_50x50-1 2.JPG" alt="Scarf mockup" />
+          <div class="gallery-caption">
+            <h3>The West Village</h3>
+            <span>New York City</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../../assets/product-flat/04_Photorealistic-Silk-Scarf-Mockup_50x50-3 2.JPG" alt="Scarf mockup" />
+          <div class="gallery-caption">
+            <h3>Childhood Summers</h3>
+            <span>Cape Cod, MA</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-row2">
+        <div class="gallery-item">
+          <img src="../../assets/product-flat/04_Photorealistic-Silk-Scarf-Mockup_50x50-5 2.JPG" alt="Scarf mockup" />
+          <div class="gallery-caption">
+            <h3>Our First Home</h3>
+            <span>Brooklyn, NY</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../../assets/product-flat/04_Photorealistic-Silk-Scarf-Mockup_50x50-7 2.JPG" alt="Scarf mockup" />
+          <div class="gallery-caption">
+            <h3>Wedding Weekend</h3>
+            <span>Tulum, Mexico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="stars">★★★★★</div>
+      <blockquote>"She turned our love story into something I can hold. I've never felt so seen by a gift."</blockquote>
+      <cite>— Rachel K., Chicago</cite>
+      <div class="badge">Etsy Star Seller · Top 100 Gifts 2025</div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder">
+    <div class="founder-img">Shivantika portrait</div>
+    <div class="founder-text">
+      <p class="ui" style="margin-bottom:12px; opacity:.5;">The Artist</p>
+      <h2>Born in Bombay, drawing in New York.</h2>
+      <p>Shivantika Jain Kothari started Anatomy of Joy because she believes the places we love deserve more than photos. They deserve to be illustrated, touched, worn, and passed down.</p>
+      <a href="#" class="btn" style="background:transparent;">Read Our Story</a>
+      <span class="signature">— Shivantika</span>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay close to the stories.</h2>
+      <p>New designs, process peeks, and the stories behind every scarf.</p>
+      <form>
+        <input type="email" placeholder="Your email address" />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <img class="logo" src="../../assets/logo/AOJ Logo_Cropped.png" alt="AOJ" />
+      <nav class="ui">
+        <a href="#">Shop</a>
+        <a href="#">Our Story</a>
+        <a href="#">FAQ</a>
+        <a href="#">Instagram</a>
+        <a href="#">Etsy</a>
+      </nav>
+      <span class="copy">© 2026 Anatomy of Joy</span>
+    </div>
+  </footer>
+
+</body>
+</html>

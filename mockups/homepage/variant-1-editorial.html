@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOJ Homepage — Variant 1: Editorial</title>
+  <style>
+    @font-face { font-family: "PastaWineBig"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Big.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "PastaWineLittle"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Little.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "DMSans"; src: url("../../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype"); font-display: swap; }
+    :root { --ink:#161616; --canvas:#f6f3ee; --yellow:#f4ba16; --ink20:rgba(22,22,22,.2); --canvas-strong:#ede9e1; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--canvas); color: var(--ink); font: 400 16px/1.55 "DMSans", system-ui, sans-serif; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+    .ui { text-transform: uppercase; letter-spacing: .09em; font-size: .78rem; font-weight: 500; }
+    .btn { display: inline-block; padding: 16px 28px; text-decoration: none; border: 2px solid var(--ink); background: var(--yellow); color: var(--ink); font: 600 .8rem/1 "DMSans", sans-serif; letter-spacing: .08em; text-transform: uppercase; transition: background .28s ease, color .28s ease; }
+    .btn:hover { background: var(--ink); color: var(--canvas); }
+    .btn-outline { background: transparent; }
+    .btn-outline:hover { background: var(--ink); color: var(--canvas); }
+    .divider { display: block; margin: 0 auto; width: 60px; opacity: .5; }
+    img { max-width: 100%; }
+
+    /* === HEADER === */
+    .header { padding: 24px 0; border-bottom: 1px solid var(--ink20); }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .header .wordmark { height: 28px; }
+    .header nav a { text-decoration: none; color: var(--ink); margin-left: 32px; }
+
+    /* === HERO: Editorial — asymmetric grid, text-heavy left === */
+    .hero { padding: clamp(60px, 10vw, 120px) 0; border-bottom: 1px solid var(--ink20); }
+    .hero .container { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
+    .hero-text h1 { font: 400 clamp(2.4rem, 6vw, 5.2rem)/0.92 "PastaWineBig", serif; margin-bottom: 20px; max-width: 11ch; }
+    .hero-text .tagline { font: 400 clamp(1.1rem, 2vw, 1.4rem)/1.4 "PastaWineLittle", serif; margin-bottom: 12px; color: var(--ink); opacity: .7; }
+    .hero-text p { max-width: 44ch; margin-bottom: 24px; line-height: 1.6; }
+    .hero-img { position: relative; }
+    .hero-img img.main { width: 100%; aspect-ratio: 4/5; object-fit: cover; border: 1px solid var(--ink20); }
+    .hero-img .arrow { position: absolute; bottom: -20px; left: -30px; width: 100px; opacity: .8; }
+
+    /* === HOW IT WORKS === */
+    .how-it-works { padding: clamp(48px, 8vw, 96px) 0; }
+    .how-it-works h2 { font: 400 clamp(1.8rem, 4vw, 3.2rem)/1 "PastaWineBig", serif; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--ink20); }
+    .step { padding: clamp(24px, 3vw, 40px); border-right: 1px solid var(--ink20); }
+    .step:last-child { border-right: 0; }
+    .step-num { font: 700 1rem/1 "DMSans", sans-serif; width: 40px; height: 40px; border: 1.5px solid var(--ink); border-radius: 50%; display: grid; place-items: center; margin-bottom: 16px; }
+    .step h3 { font: 400 clamp(1.2rem, 2vw, 1.6rem)/1.15 "PastaWineLittle", serif; margin-bottom: 10px; }
+    .step p { font-size: .95rem; line-height: 1.5; }
+
+    /* === FEATURED STORIES === */
+    .featured { padding: clamp(48px, 8vw, 96px) 0; border-top: 1px solid var(--ink20); }
+    .featured h2 { font: 400 clamp(1.8rem, 4vw, 3.2rem)/1 "PastaWineBig", serif; margin-bottom: 40px; }
+    .stories-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); }
+    .story-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid var(--ink20); margin-bottom: 14px; }
+    .story-card h3 { font: 400 1.2rem/1.2 "PastaWineLittle", serif; margin-bottom: 6px; }
+    .story-card p { font-size: .9rem; opacity: .7; margin-bottom: 10px; }
+    .story-card a { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink); }
+
+    /* === SOCIAL PROOF === */
+    .social-proof { padding: clamp(48px, 8vw, 96px) 0; background: var(--canvas-strong); border-top: 1px solid var(--ink20); border-bottom: 1px solid var(--ink20); }
+    .proof-card { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px; border: 1px solid var(--ink20); background: var(--canvas); }
+    .proof-card .stars { font-size: 1.4rem; margin-bottom: 12px; }
+    .proof-card blockquote { font: 400 clamp(1.1rem, 2vw, 1.3rem)/1.5 "PastaWineLittle", serif; font-style: italic; margin-bottom: 16px; }
+    .proof-card cite { display: block; font-style: normal; font-size: .85rem; opacity: .6; }
+    .proof-card .badge { margin-top: 20px; font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; padding: 8px 16px; border: 1px solid var(--ink20); display: inline-block; }
+
+    /* === FOUNDER TEASER === */
+    .founder { padding: clamp(48px, 8vw, 96px) 0; }
+    .founder .container { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+    .founder-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: var(--canvas-strong); border: 1px solid var(--ink20); }
+    .founder-text .eyebrow { margin-bottom: 12px; }
+    .founder-text h2 { font: 400 clamp(1.6rem, 3vw, 2.4rem)/1.05 "PastaWineBig", serif; margin-bottom: 16px; }
+    .founder-text p { max-width: 48ch; line-height: 1.6; margin-bottom: 20px; }
+
+    /* === NEWSLETTER === */
+    .newsletter { padding: clamp(48px, 8vw, 80px) 0; border-top: 1px solid var(--ink20); text-align: center; }
+    .newsletter h2 { font: 400 clamp(1.6rem, 3vw, 2.4rem)/1.05 "PastaWineBig", serif; margin-bottom: 8px; }
+    .newsletter p { margin-bottom: 20px; opacity: .7; }
+    .newsletter form { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+    .newsletter input { flex: 1; padding: 14px 18px; border: 1.5px solid var(--ink); background: transparent; font: 400 .9rem/1 "DMSans", sans-serif; outline: none; }
+    .newsletter input:focus { border-color: var(--yellow); }
+    .newsletter button { padding: 14px 24px; border: 1.5px solid var(--ink); border-left: 0; background: var(--yellow); font: 600 .78rem/1 "DMSans", sans-serif; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; transition: background .28s ease; }
+    .newsletter button:hover { background: var(--ink); color: var(--canvas); }
+
+    /* === FOOTER === */
+    .footer { padding: 40px 0; border-top: 1px solid var(--ink20); }
+    .footer .container { display: flex; justify-content: space-between; align-items: center; }
+    .footer .logo { height: 40px; }
+    .footer nav a { text-decoration: none; color: var(--ink); margin-left: 24px; font-size: .85rem; }
+    .footer .copy { font-size: .75rem; opacity: .5; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-img { order: -1; }
+      .steps { grid-template-columns: 1fr; }
+      .step { border-right: 0; border-bottom: 1px solid var(--ink20); }
+      .step:last-child { border-bottom: 0; }
+      .stories-grid { grid-template-columns: 1fr; }
+      .founder .container { grid-template-columns: 1fr; }
+      .founder-img { max-height: 400px; }
+      .footer .container { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <img class="wordmark" src="../../assets/logo/AOJ Wordmark.png" alt="Anatomy of Joy" />
+      <nav class="ui">
+        <a href="#">Shop</a>
+        <a href="#">Our Story</a>
+        <a href="#">How It Works</a>
+        <a href="#">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <p class="tagline">where your stories find a forever.</p>
+        <h1>Every place has a story. We make it wearable.</h1>
+        <p>Anatomy of Joy creates custom illustrated silk scarves that capture your most meaningful places and memories — hand-drawn, one story at a time.</p>
+        <a href="#" class="btn">Start Your Story</a>
+      </div>
+      <div class="hero-img">
+        <img class="main" src="../../assets/images/Despl_02_Polished.jpg" alt="AOJ featured scarf" />
+        <img class="arrow" src="../../assets/arrows/black/thin arrows-01.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div style="padding: 32px 0; text-align: center;">
+    <img class="divider" src="../../assets/dividers/AOJ_2.0_(1).png" alt="" />
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <p class="ui" style="margin-bottom: 12px;">The Process</p>
+      <h2>Three steps from memory to keepsake.</h2>
+      <div class="steps">
+        <article class="step">
+          <div class="step-num">01</div>
+          <h3>Share Your Story</h3>
+          <p>Tell us the place, person, or moment you want captured in your custom scarf.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">02</div>
+          <h3>We Illustrate</h3>
+          <p>Our team creates an original hand-drawn composition and sends you a preview.</p>
+        </article>
+        <article class="step">
+          <div class="step-num">03</div>
+          <h3>You Receive Joy</h3>
+          <p>Your finished silk keepsake arrives ready to wear, gift, and treasure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED STORIES -->
+  <section class="featured">
+    <div class="container">
+      <p class="ui" style="margin-bottom: 12px;">Stories We've Told</p>
+      <h2>Each scarf is someone's memory.</h2>
+      <div class="stories-grid">
+        <article class="story-card">
+          <img src="../../assets/product-flat/Screenshot 2026-03-24 at 5.28.34 PM.png" alt="Custom scarf design" />
+          <h3>Susan's New York</h3>
+          <p>A neighborhood map of the West Village, illustrated from morning walks and corner cafes.</p>
+          <a href="#">See the story →</a>
+        </article>
+        <article class="story-card">
+          <img src="../../assets/product-flat/Screenshot 2026-03-17 at 2.52.08 PM.png" alt="Custom scarf design" />
+          <h3>Morgan's Childhood Home</h3>
+          <p>A family house in Connecticut, drawn from photos spanning three generations.</p>
+          <a href="#">See the story →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <div class="container">
+      <div class="proof-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I cried when I opened it. She captured our entire love story in one scarf."</blockquote>
+        <cite>— Sarah M., New York</cite>
+        <div class="badge">Featured in Etsy's Top 100 Gifts 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER TEASER -->
+  <section class="founder">
+    <div class="container">
+      <div class="founder-img" style="display:grid; place-items:center; font-size:.9rem; opacity:.4;">Shivantika portrait</div>
+      <div class="founder-text">
+        <p class="ui eyebrow">Meet the Artist</p>
+        <h2>Every scarf begins with listening.</h2>
+        <p>Shivantika Jain Kothari is the illustrator and founder behind Anatomy of Joy. Born in Bombay, based in New York, she believes the places we love shape who we become — and deserve to be held close.</p>
+        <a href="#" class="btn btn-outline">Read Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Join the story.</h2>
+      <p>New designs, behind-the-scenes process, and stories from customers who wear their memories.</p>
+      <form>
+        <input type="email" placeholder="Your email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <img class="logo" src="../../assets/logo/AOJ Logo_Cropped.png" alt="AOJ" />
+      <nav class="ui">
+        <a href="#">Shop</a>
+        <a href="#">Our Story</a>
+        <a href="#">FAQ</a>
+        <a href="#">Instagram</a>
+        <a href="#">Etsy</a>
+      </nav>
+      <span class="copy">© 2026 Anatomy of Joy</span>
+    </div>
+  </footer>
+
+</body>
+</html>
