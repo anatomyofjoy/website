@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOJ Mockup - Newsletter</title>
+  <style>
+    @font-face { font-family: "PastaWineBig"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Big.otf") format("opentype"); }
+    @font-face { font-family: "DMSans"; src: url("../../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype"); }
+    :root { --ink:#161616; --canvas:#f6f3ee; --yellow:#f4ba16; --ink20:rgba(22,22,22,.2); }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: "DMSans", sans-serif; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 48px); }
+    .panel { border: 2px solid var(--ink); background: linear-gradient(170deg, rgba(244,186,22,.22), rgba(246,243,238,.98)); padding: clamp(24px, 4vw, 36px); position: relative; }
+    h2 { margin: 0 0 8px; font: 400 clamp(1.8rem, 4vw, 3rem)/1 "PastaWineBig", serif; }
+    p { margin: 0 0 18px; line-height: 1.5; max-width: 50ch; }
+    form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+    input { border: 1px solid var(--ink20); background: #fffdfa; color: var(--ink); padding: 13px 14px; font: 500 1rem/1 "DMSans", sans-serif; }
+    button { border: 2px solid var(--ink); background: var(--ink); color: var(--canvas); padding: 0 18px; text-transform: uppercase; letter-spacing: .08em; font: 600 .8rem/1 "DMSans", sans-serif; }
+    button:hover { background: var(--yellow); color: var(--ink); }
+    .state-row { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+    .state { border: 1px solid var(--ink20); padding: 6px 10px; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; }
+    .success { background: rgba(244,186,22,.3); }
+    .error { background: rgba(22,22,22,.08); }
+    @media (max-width: 700px) { form { grid-template-columns: 1fr; } button { height: 46px; } }
+  </style>
+</head>
+<body>
+  <section class="wrap">
+    <div class="panel">
+      <h2>Daydream with us.</h2>
+      <p>Get new story drops, behind-the-scenes sketches, and first access to custom slots.</p>
+      <form>
+        <input type="email" placeholder="Email address" aria-label="Email address" />
+        <button type="button">Join the List</button>
+      </form>
+      <div class="state-row">
+        <span class="state success">Success: You're in.</span>
+        <span class="state error">Error: Please enter a valid email.</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

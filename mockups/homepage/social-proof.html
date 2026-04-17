@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOJ Mockup - Social Proof</title>
+  <style>
+    @font-face { font-family: "PastaWineBig"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Big.otf") format("opentype"); }
+    @font-face { font-family: "DMSans"; src: url("../../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype"); }
+    :root { --ink:#161616; --canvas:#f6f3ee; --yellow:#f4ba16; --ink20:rgba(22,22,22,.2); }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: "DMSans", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) clamp(20px, 5vw, 48px); }
+    h2 { margin: 0 0 22px; font: 400 clamp(1.8rem, 4vw, 3rem)/1 "PastaWineBig", serif; }
+    .card { position: relative; border: 2px solid var(--ink); background: #fbf8f2; padding: clamp(20px, 4vw, 32px); }
+    .quote { margin: 0; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.6; max-width: 54ch; }
+    .source { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--ink20); text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .chip { background: var(--yellow); padding: 6px 10px; border: 1px solid var(--ink); text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; }
+    .divider { width: 160px; position: absolute; right: 10px; top: -18px; }
+  </style>
+</head>
+<body>
+  <section class="wrap">
+    <h2>Social Proof</h2>
+    <article class="card">
+      <img class="divider" src="../../assets/dividers/AOJ_2.0_(1) 5.png" alt="decorative divider" />
+      <div class="chips">
+        <span class="chip">Press Feature</span>
+        <span class="chip">Customer Story</span>
+      </div>
+      <p class="quote">"The team translated my grandmother's letters and neighborhood landmarks into a scarf that made my entire family cry. It's art with memory stitched into every corner."</p>
+      <p class="source">Featured by independent gift editors and 5-star customer reviews</p>
+    </article>
+  </section>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AOJ Mockup - Hero</title>
+  <style>
+    @font-face { font-family: "PastaWineBig"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Big.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "PastaWineLittle"; src: url("../../assets/fonts/Pasta and Wine/Regular Fonts/Pasta & Wine Little.otf") format("opentype"); font-display: swap; }
+    @font-face { font-family: "DMSans"; src: url("../../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf") format("truetype"); font-display: swap; }
+    :root { --ink:#161616; --canvas:#f6f3ee; --yellow:#f4ba16; --ink20:rgba(22,22,22,.2); }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font-family: "DMSans", sans-serif; }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 1fr; border-bottom: 2px solid var(--ink); }
+    .copy { padding: clamp(24px, 5vw, 72px); display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+    .wordmark { width: min(360px, 70%); }
+    h1 { margin: 0; font: 400 clamp(2.2rem, 5.6vw, 5rem)/0.95 "PastaWineBig", serif; max-width: 10ch; }
+    p { margin: 0; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.5; max-width: 42ch; }
+    .ui { text-transform: uppercase; letter-spacing: .09em; font-size: .8rem; }
+    .actions { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+    .btn { display: inline-block; padding: 14px 22px; text-decoration: none; border: 2px solid var(--ink); background: var(--yellow); color: var(--ink); font: 600 .82rem/1 "DMSans", sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .btn:hover { background: var(--ink); color: var(--canvas); }
+    .note { border-bottom: 1px solid var(--ink20); padding-bottom: 4px; }
+    .art { position: relative; overflow: hidden; border-left: 1px solid var(--ink20); }
+    .art img.main { width: 100%; height: 100%; object-fit: cover; }
+    .art img.overlay { position: absolute; right: 4%; top: 6%; width: min(170px, 28vw); }
+    .arrow { position: absolute; left: 5%; bottom: 8%; width: min(120px, 20vw); opacity: .9; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .art { min-height: 54vh; border-left: 0; border-top: 1px solid var(--ink20); }
+      h1 { max-width: 12ch; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="copy">
+      <img class="wordmark" src="../../assets/logo/AOJ Wordmark.png" alt="Anatomy of Joy" />
+      <p class="ui note">Custom story scarves and keepsakes</p>
+      <h1>Your story, illustrated and wrapped in joy.</h1>
+      <p>We turn places, milestones, and memories into custom silk keepsakes you can hold onto forever.</p>
+      <div class="actions">
+        <a href="#" class="btn">Start Your Story</a>
+        <span class="ui">3-step custom process</span>
+      </div>
+    </div>
+    <div class="art">
+      <img class="main" src="../../assets/images/Despl_02_Polished.jpg" alt="AOJ featured scarf image" />
+      <img class="overlay" src="../../assets/dividers/AOJ_2.0_(1) 8.png" alt="decorative divider" />
+      <img class="arrow" src="../../assets/arrows/black/thin arrows-01.png" alt="decorative arrow" />
+    </div>
+  </section>
+</body>
+</html>
